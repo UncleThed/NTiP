@@ -61,9 +61,17 @@ namespace Model
         /// Расчитать объем пирамиды
         /// </summary>
         /// <returns></returns>
-        public double GetVolume
+        public double Volume
         {
             get { return BaseArea * Height / 3.0; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Pyramid"; }
         }
     }
 }

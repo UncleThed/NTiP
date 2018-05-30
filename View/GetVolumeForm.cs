@@ -31,6 +31,15 @@ namespace View
             
             _createFigureForm.Show();
         }
+
+        private void RemoveFigure_Click(object sender, EventArgs e)
+        {
+            if (DataGridView.CurrentCellAddress.Y >= 0)
+            {
+                int index = DataGridView.SelectedCells[0].RowIndex;
+                DataGridView.Rows.RemoveAt(index);
+            }
+        }
     }
 
 

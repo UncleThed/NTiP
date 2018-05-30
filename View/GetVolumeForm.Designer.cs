@@ -62,7 +62,7 @@
             this.DataGridView.Location = new System.Drawing.Point(0, 118);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(244, 174);
+            this.DataGridView.Size = new System.Drawing.Size(327, 174);
             this.DataGridView.TabIndex = 2;
             // 
             // RemoveFigure
@@ -73,6 +73,7 @@
             this.RemoveFigure.TabIndex = 1;
             this.RemoveFigure.Text = "Remove Figure";
             this.RemoveFigure.UseVisualStyleBackColor = true;
+            this.RemoveFigure.Click += new System.EventHandler(this.RemoveFigure_Click);
             // 
             // AddFigure
             // 
@@ -86,12 +87,13 @@
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "Type";
             this.Column1.HeaderText = "Figure";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "GetVolume";
+            this.Column2.DataPropertyName = "Volume";
             this.Column2.HeaderText = "Volume";
             this.Column2.Name = "Column2";
             // 

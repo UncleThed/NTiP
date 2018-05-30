@@ -79,9 +79,17 @@ namespace Model
         /// Расчитать площадь параллелепипеда
         /// </summary>
         /// <returns></returns>
-        public double GetVolume
+        public double Volume
         {
             get { return A * B * C; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Parallelepiped"; }
         }
     }
 }

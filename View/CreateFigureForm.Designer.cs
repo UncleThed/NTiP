@@ -35,18 +35,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.sideABox = new System.Windows.Forms.MaskedTextBox();
-            this.sideBBox = new System.Windows.Forms.MaskedTextBox();
-            this.sideCBox = new System.Windows.Forms.MaskedTextBox();
             this.ParallelepipedGroup = new System.Windows.Forms.GroupBox();
             this.PyramidGroup = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.heightBox = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.baseAreaBox = new System.Windows.Forms.MaskedTextBox();
             this.SphereGroup = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.radiusBox = new System.Windows.Forms.MaskedTextBox();
+            this.heightBox = new System.Windows.Forms.TextBox();
+            this.baseAreaBox = new System.Windows.Forms.TextBox();
+            this.radiusBox = new System.Windows.Forms.TextBox();
+            this.sideBBox = new System.Windows.Forms.TextBox();
+            this.sideCBox = new System.Windows.Forms.TextBox();
+            this.sideABox = new System.Windows.Forms.TextBox();
             this.ParallelepipedGroup.SuspendLayout();
             this.PyramidGroup.SuspendLayout();
             this.SphereGroup.SuspendLayout();
@@ -123,44 +123,14 @@
             this.label4.Text = "side C";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // sideABox
-            // 
-            this.sideABox.Location = new System.Drawing.Point(59, 21);
-            this.sideABox.Mask = "00000";
-            this.sideABox.Name = "sideABox";
-            this.sideABox.PromptChar = '0';
-            this.sideABox.Size = new System.Drawing.Size(100, 22);
-            this.sideABox.TabIndex = 7;
-            this.sideABox.ValidatingType = typeof(int);
-            // 
-            // sideBBox
-            // 
-            this.sideBBox.Location = new System.Drawing.Point(59, 49);
-            this.sideBBox.Mask = "00000";
-            this.sideBBox.Name = "sideBBox";
-            this.sideBBox.PromptChar = '0';
-            this.sideBBox.Size = new System.Drawing.Size(100, 22);
-            this.sideBBox.TabIndex = 8;
-            this.sideBBox.ValidatingType = typeof(int);
-            // 
-            // sideCBox
-            // 
-            this.sideCBox.Location = new System.Drawing.Point(59, 77);
-            this.sideCBox.Mask = "00000";
-            this.sideCBox.Name = "sideCBox";
-            this.sideCBox.PromptChar = '0';
-            this.sideCBox.Size = new System.Drawing.Size(100, 22);
-            this.sideCBox.TabIndex = 9;
-            this.sideCBox.ValidatingType = typeof(int);
-            // 
             // ParallelepipedGroup
             // 
             this.ParallelepipedGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ParallelepipedGroup.Controls.Add(this.label2);
             this.ParallelepipedGroup.Controls.Add(this.sideABox);
-            this.ParallelepipedGroup.Controls.Add(this.label3);
-            this.ParallelepipedGroup.Controls.Add(this.sideCBox);
             this.ParallelepipedGroup.Controls.Add(this.sideBBox);
+            this.ParallelepipedGroup.Controls.Add(this.sideCBox);
+            this.ParallelepipedGroup.Controls.Add(this.label2);
+            this.ParallelepipedGroup.Controls.Add(this.label3);
             this.ParallelepipedGroup.Controls.Add(this.label4);
             this.ParallelepipedGroup.Location = new System.Drawing.Point(494, 112);
             this.ParallelepipedGroup.Name = "ParallelepipedGroup";
@@ -173,10 +143,10 @@
             // PyramidGroup
             // 
             this.PyramidGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PyramidGroup.Controls.Add(this.baseAreaBox);
             this.PyramidGroup.Controls.Add(this.label5);
             this.PyramidGroup.Controls.Add(this.heightBox);
             this.PyramidGroup.Controls.Add(this.label6);
-            this.PyramidGroup.Controls.Add(this.baseAreaBox);
             this.PyramidGroup.Location = new System.Drawing.Point(30, 112);
             this.PyramidGroup.Name = "PyramidGroup";
             this.PyramidGroup.Size = new System.Drawing.Size(194, 122);
@@ -193,16 +163,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "height";
             // 
-            // heightBox
-            // 
-            this.heightBox.Location = new System.Drawing.Point(84, 21);
-            this.heightBox.Mask = "00000";
-            this.heightBox.Name = "heightBox";
-            this.heightBox.PromptChar = '0';
-            this.heightBox.Size = new System.Drawing.Size(100, 22);
-            this.heightBox.TabIndex = 7;
-            this.heightBox.ValidatingType = typeof(int);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -212,21 +172,11 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "base area";
             // 
-            // baseAreaBox
-            // 
-            this.baseAreaBox.Location = new System.Drawing.Point(84, 49);
-            this.baseAreaBox.Mask = "00000";
-            this.baseAreaBox.Name = "baseAreaBox";
-            this.baseAreaBox.PromptChar = '0';
-            this.baseAreaBox.Size = new System.Drawing.Size(100, 22);
-            this.baseAreaBox.TabIndex = 8;
-            this.baseAreaBox.ValidatingType = typeof(int);
-            // 
             // SphereGroup
             // 
             this.SphereGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SphereGroup.Controls.Add(this.label8);
             this.SphereGroup.Controls.Add(this.radiusBox);
+            this.SphereGroup.Controls.Add(this.label8);
             this.SphereGroup.Location = new System.Drawing.Point(257, 112);
             this.SphereGroup.Name = "SphereGroup";
             this.SphereGroup.Size = new System.Drawing.Size(194, 122);
@@ -243,15 +193,60 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "radius";
             // 
+            // heightBox
+            // 
+            this.heightBox.Location = new System.Drawing.Point(84, 23);
+            this.heightBox.Name = "heightBox";
+            this.heightBox.Size = new System.Drawing.Size(100, 22);
+            this.heightBox.TabIndex = 13;
+            this.heightBox.Tag = "";
+            this.heightBox.Text = "0";
+            this.heightBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.heightBox_KeyPress);
+            // 
+            // baseAreaBox
+            // 
+            this.baseAreaBox.Location = new System.Drawing.Point(84, 51);
+            this.baseAreaBox.Name = "baseAreaBox";
+            this.baseAreaBox.Size = new System.Drawing.Size(100, 22);
+            this.baseAreaBox.TabIndex = 14;
+            this.baseAreaBox.Text = "0";
+            this.baseAreaBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.baseAreaBox_KeyPress);
+            // 
             // radiusBox
             // 
-            this.radiusBox.Location = new System.Drawing.Point(59, 21);
-            this.radiusBox.Mask = "00000";
+            this.radiusBox.Location = new System.Drawing.Point(59, 23);
             this.radiusBox.Name = "radiusBox";
-            this.radiusBox.PromptChar = '0';
             this.radiusBox.Size = new System.Drawing.Size(100, 22);
-            this.radiusBox.TabIndex = 7;
-            this.radiusBox.ValidatingType = typeof(int);
+            this.radiusBox.TabIndex = 14;
+            this.radiusBox.Text = "0";
+            this.radiusBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.radiusBox_KeyPress);
+            // 
+            // sideBBox
+            // 
+            this.sideBBox.Location = new System.Drawing.Point(59, 51);
+            this.sideBBox.Name = "sideBBox";
+            this.sideBBox.Size = new System.Drawing.Size(100, 22);
+            this.sideBBox.TabIndex = 15;
+            this.sideBBox.Text = "0";
+            this.sideBBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideBBox_KeyPress);
+            // 
+            // sideCBox
+            // 
+            this.sideCBox.Location = new System.Drawing.Point(59, 79);
+            this.sideCBox.Name = "sideCBox";
+            this.sideCBox.Size = new System.Drawing.Size(100, 22);
+            this.sideCBox.TabIndex = 16;
+            this.sideCBox.Text = "0";
+            this.sideCBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideCBox_KeyPress);
+            // 
+            // sideABox
+            // 
+            this.sideABox.Location = new System.Drawing.Point(59, 23);
+            this.sideABox.Name = "sideABox";
+            this.sideABox.Size = new System.Drawing.Size(100, 22);
+            this.sideABox.TabIndex = 17;
+            this.sideABox.Text = "0";
+            this.sideABox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideABox_KeyPress);
             // 
             // CreateFigureForm
             // 
@@ -287,17 +282,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox sideABox;
-        private System.Windows.Forms.MaskedTextBox sideBBox;
-        private System.Windows.Forms.MaskedTextBox sideCBox;
         private System.Windows.Forms.GroupBox PyramidGroup;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox heightBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox baseAreaBox;
         private System.Windows.Forms.GroupBox SphereGroup;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox radiusBox;
         private System.Windows.Forms.GroupBox ParallelepipedGroup;
+        private System.Windows.Forms.TextBox sideABox;
+        private System.Windows.Forms.TextBox sideBBox;
+        private System.Windows.Forms.TextBox sideCBox;
+        private System.Windows.Forms.TextBox baseAreaBox;
+        private System.Windows.Forms.TextBox heightBox;
+        private System.Windows.Forms.TextBox radiusBox;
     }
 }

@@ -42,9 +42,17 @@ namespace Model
         /// Расчитать объем шара
         /// </summary>
         /// <returns></returns>
-        public double GetVolume
+        public double Volume
         {
             get { return Math.PI * Radius * Radius * Radius * 4.0 / 3.0; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Sphere"; }
         }
     }
 }

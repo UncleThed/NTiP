@@ -15,10 +15,11 @@ namespace Model
         /// Рассчитать объем фигуры.
         /// </summary>
         /// <returns></returns>
-        double GetVolume { get;}
+        double Volume { get;}
+
         /// <summary>
-        /// 
+        /// Получить тип фигуры
         /// </summary>
-        double
+        string Type { get; }
     }
 }
