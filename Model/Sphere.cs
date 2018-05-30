@@ -42,9 +42,9 @@ namespace Model
         /// Расчитать объем шара
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double GetVolume
         {
-            return Math.PI * Radius * Radius * Radius * 4.0 / 3.0;
+            get { return Math.PI * Radius * Radius * Radius * 4.0 / 3.0; }
         }
     }
 }

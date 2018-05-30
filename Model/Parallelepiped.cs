@@ -79,9 +79,9 @@ namespace Model
         /// Расчитать площадь параллелепипеда
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double GetVolume
         {
-            return A * B * C;
+            get { return A * B * C; }
         }
     }
 }

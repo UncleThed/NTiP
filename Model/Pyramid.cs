@@ -61,9 +61,9 @@ namespace Model
         /// Расчитать объем пирамиды
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double GetVolume
         {
-            return BaseArea * Height / 3.0;
+            get { return BaseArea * Height / 3.0; }
         }
     }
 }
