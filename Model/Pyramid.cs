@@ -9,6 +9,7 @@ namespace Model
     /// <summary>
     /// Пирамида
     /// </summary>
+    [Serializable]
     public class Pyramid : IFigure
     {
         private int _baseArea;

@@ -9,6 +9,7 @@ namespace Model
     /// <summary>
     /// Параллелепипед
     /// </summary>
+    [Serializable]
     public class Parallelepiped : IFigure
     {
         private int _a;

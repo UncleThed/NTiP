@@ -18,7 +18,13 @@ namespace View
         public CreateFigureForm(BindingSource bindingSource)
         {
             InitializeComponent();
+            this.Size = new Size(320, 300);
             _bindingSource = bindingSource;
+
+#if !DEBUG
+            randomButton.Visible = false;
+#endif
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -46,7 +52,8 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 1290", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 1290", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 
@@ -65,7 +72,8 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 46340", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 46340", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -80,7 +88,8 @@ namespace View
                 }
                 else
                 {
-                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 800", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Параметры должны быть больше 0 и не превышать 800", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -161,6 +170,27 @@ namespace View
             if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
             {
                 e.Handled = true;
+            }
+        }
+
+        private void randomButton_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+
+            if (SelectFigureBox.SelectedIndex == 0)
+            {
+                sideABox.Text = Convert.ToString(rand.Next(1, 50));
+                sideBBox.Text = Convert.ToString(rand.Next(1, 50));
+                sideCBox.Text = Convert.ToString(rand.Next(1, 50));
+            }
+            else if (SelectFigureBox.SelectedIndex == 1)
+            {
+                baseAreaBox.Text = Convert.ToString(rand.Next(1, 10000));
+                heightBox.Text = Convert.ToString(rand.Next(1, 200));
+            }
+            else
+            {
+                radiusBox.Text = Convert.ToString(rand.Next(1, 500));
             }
         }
     }

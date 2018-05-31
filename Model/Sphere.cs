@@ -9,6 +9,7 @@ namespace Model
     /// <summary>
     /// Шар
     /// </summary>
+    [Serializable]
     public class Sphere : IFigure
     {
         private int _radius;
