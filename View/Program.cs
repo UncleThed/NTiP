@@ -16,7 +16,7 @@ namespace View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GetVolumeForm());
+            Application.Run(new MainForm());
         }
     }
 }

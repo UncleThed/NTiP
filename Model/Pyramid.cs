@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Пирамида
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class Pyramid : IFigure
     {
+        [DataMember]
         private int _baseArea;
+
+        [DataMember]
         private int _height;
 
         /// <summary>

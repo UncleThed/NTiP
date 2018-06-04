@@ -47,7 +47,6 @@
             this.SphereGroup = new System.Windows.Forms.GroupBox();
             this.radiusBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.randomButton = new System.Windows.Forms.Button();
             this.ParallelepipedGroup.SuspendLayout();
             this.PyramidGroup.SuspendLayout();
             this.SphereGroup.SuspendLayout();
@@ -61,15 +60,17 @@
             "Parallelepiped",
             "Pyramid",
             "Sphere"});
-            this.SelectFigureBox.Location = new System.Drawing.Point(9, 38);
+            this.SelectFigureBox.Location = new System.Drawing.Point(12, 38);
             this.SelectFigureBox.Name = "SelectFigureBox";
             this.SelectFigureBox.Size = new System.Drawing.Size(176, 24);
             this.SelectFigureBox.TabIndex = 0;
             this.SelectFigureBox.SelectedIndexChanged += new System.EventHandler(this.SelectFigureBox_SelectedIndexChanged);
+            this.SelectFigureBox.VisibleChanged += new System.EventHandler(this.SelectFigureBox_VisibleChanged);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(30, 256);
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cancelButton.Location = new System.Drawing.Point(12, 407);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(155, 34);
             this.cancelButton.TabIndex = 1;
@@ -79,7 +80,8 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(203, 256);
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.okButton.Location = new System.Drawing.Point(173, 407);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(155, 34);
             this.okButton.TabIndex = 2;
@@ -90,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 17);
             this.label1.TabIndex = 3;
@@ -122,7 +124,6 @@
             this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "side C";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // ParallelepipedGroup
             // 
@@ -133,9 +134,9 @@
             this.ParallelepipedGroup.Controls.Add(this.label2);
             this.ParallelepipedGroup.Controls.Add(this.label3);
             this.ParallelepipedGroup.Controls.Add(this.label4);
-            this.ParallelepipedGroup.Location = new System.Drawing.Point(427, 145);
+            this.ParallelepipedGroup.Location = new System.Drawing.Point(307, 87);
             this.ParallelepipedGroup.Name = "ParallelepipedGroup";
-            this.ParallelepipedGroup.Size = new System.Drawing.Size(194, 122);
+            this.ParallelepipedGroup.Size = new System.Drawing.Size(230, 150);
             this.ParallelepipedGroup.TabIndex = 10;
             this.ParallelepipedGroup.TabStop = false;
             this.ParallelepipedGroup.Visible = false;
@@ -175,9 +176,9 @@
             this.PyramidGroup.Controls.Add(this.label5);
             this.PyramidGroup.Controls.Add(this.heightBox);
             this.PyramidGroup.Controls.Add(this.label6);
-            this.PyramidGroup.Location = new System.Drawing.Point(427, 17);
+            this.PyramidGroup.Location = new System.Drawing.Point(49, 87);
             this.PyramidGroup.Name = "PyramidGroup";
-            this.PyramidGroup.Size = new System.Drawing.Size(194, 122);
+            this.PyramidGroup.Size = new System.Drawing.Size(230, 150);
             this.PyramidGroup.TabIndex = 11;
             this.PyramidGroup.TabStop = false;
             this.PyramidGroup.Visible = false;
@@ -224,9 +225,9 @@
             this.SphereGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SphereGroup.Controls.Add(this.radiusBox);
             this.SphereGroup.Controls.Add(this.label8);
-            this.SphereGroup.Location = new System.Drawing.Point(655, 66);
+            this.SphereGroup.Location = new System.Drawing.Point(307, 243);
             this.SphereGroup.Name = "SphereGroup";
-            this.SphereGroup.Size = new System.Drawing.Size(194, 122);
+            this.SphereGroup.Size = new System.Drawing.Size(230, 150);
             this.SphereGroup.TabIndex = 12;
             this.SphereGroup.TabStop = false;
             this.SphereGroup.Visible = false;
@@ -249,22 +250,11 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "radius";
             // 
-            // randomButton
-            // 
-            this.randomButton.Location = new System.Drawing.Point(224, 183);
-            this.randomButton.Name = "randomButton";
-            this.randomButton.Size = new System.Drawing.Size(155, 48);
-            this.randomButton.TabIndex = 13;
-            this.randomButton.Text = "Create Random Data";
-            this.randomButton.UseVisualStyleBackColor = true;
-            this.randomButton.Click += new System.EventHandler(this.randomButton_Click);
-            // 
             // CreateFigureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 501);
-            this.Controls.Add(this.randomButton);
+            this.ClientSize = new System.Drawing.Size(582, 453);
             this.Controls.Add(this.SphereGroup);
             this.Controls.Add(this.PyramidGroup);
             this.Controls.Add(this.ParallelepipedGroup);
@@ -272,8 +262,10 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.SelectFigureBox);
+            this.MinimumSize = new System.Drawing.Size(400, 350);
             this.Name = "CreateFigureForm";
             this.Text = "Create Figure";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateFigureForm_FormClosed);
             this.ParallelepipedGroup.ResumeLayout(false);
             this.ParallelepipedGroup.PerformLayout();
             this.PyramidGroup.ResumeLayout(false);
@@ -306,6 +298,5 @@
         private System.Windows.Forms.TextBox baseAreaBox;
         private System.Windows.Forms.TextBox heightBox;
         private System.Windows.Forms.TextBox radiusBox;
-        private System.Windows.Forms.Button randomButton;
     }
 }

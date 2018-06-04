@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Параллелепипед
     /// </summary>
-    [Serializable]
+    [DataContract]
     public class Parallelepiped : IFigure
     {
+        [DataMember]
         private int _a;
+
+        [DataMember]
         private int _b;
+
+        [DataMember]
         private int _c;
 
         /// <summary>
