@@ -34,24 +34,22 @@ namespace View
             bindingSource.DataSource = _figures;
             DataGridView.DataSource = bindingSource;
 
-            List<Type> knownTypeList = new List<Type>();
-            knownTypeList.Add(typeof(Parallelepiped));
-            knownTypeList.Add(typeof(Pyramid));
-            knownTypeList.Add(typeof(Sphere));
+            List<Type> knownTypeList = new List<Type>
+            {
+                typeof(Parallelepiped),
+                typeof(Pyramid),
+                typeof(Sphere)
+            };
 
             _serializer = new DataContractJsonSerializer(typeof(List<IFigure>), knownTypeList);
-
-#if !DEBUG
-            RandomButton.Visible = false;
-#endif
         }
 
         private void AddFigure_Click(object sender, EventArgs e)
         {
             _createFigureForm.ShowDialog();
-            if (_createFigureForm.figure != null)
+            if (_createFigureForm.Figure != null)
             {
-                bindingSource.Add(_createFigureForm.figure);
+                bindingSource.Add(_createFigureForm.Figure);
             }
         }
 
@@ -64,34 +62,50 @@ namespace View
             }
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog.AddExtension = true;
             openFileDialog.Filter = "Figures|*.fig";
-            openFileDialog.ShowDialog();
+            DialogResult result = openFileDialog.ShowDialog();
 
-            FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate);
-            List<IFigure> deserializeFigures = (List<IFigure>)_serializer.ReadObject(fileStream);
-            fileStream.Dispose();         
-
-            bindingSource.Clear();
-
-            foreach (IFigure figure in deserializeFigures)
+            if (result == DialogResult.Cancel)
             {
-                bindingSource.Add(figure);
+                return;
+            }
+            else
+            {
+
+                FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate);
+                List<IFigure> deserializeFigures = (List<IFigure>)_serializer.ReadObject(fileStream);
+                fileStream.Dispose();
+
+                bindingSource.Clear();
+
+                foreach (IFigure figure in deserializeFigures)
+                {
+                    bindingSource.Add(figure);
+                }
             }
 
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog.AddExtension = true;
             saveFileDialog.Filter = "Figures|*.fig";
-            saveFileDialog.ShowDialog();
+            DialogResult result = saveFileDialog.ShowDialog();
 
-            FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
-            _serializer.WriteObject(fileStream, _figures);
-            fileStream.Dispose();
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+
+                FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
+                _serializer.WriteObject(fileStream, _figures);
+                fileStream.Dispose();
+            }
         }
 
         private void MinVolumeBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -156,6 +170,7 @@ namespace View
             switch (e.KeyCode)
             {
                 case Keys.F6:
+#if DEBUG
                     if (e.Control)
                     {
                         Random rand = new Random();
@@ -180,6 +195,7 @@ namespace View
                             bindingSource.Add(new Sphere(radius));
                         }
                     }
+#endif
                     break;
             }
         }

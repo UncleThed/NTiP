@@ -45,6 +45,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
             this.GridControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -56,6 +57,7 @@
             this.GridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridControl.Controls.Add(this.label2);
             this.GridControl.Controls.Add(this.label1);
             this.GridControl.Controls.Add(this.maxVolumeBox);
             this.GridControl.Controls.Add(this.DataGridView);
@@ -71,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 18);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 17);
             this.label1.TabIndex = 6;
@@ -79,7 +81,7 @@
             // 
             // maxVolumeBox
             // 
-            this.maxVolumeBox.Location = new System.Drawing.Point(173, 18);
+            this.maxVolumeBox.Location = new System.Drawing.Point(192, 21);
             this.maxVolumeBox.Name = "maxVolumeBox";
             this.maxVolumeBox.Size = new System.Drawing.Size(100, 22);
             this.maxVolumeBox.TabIndex = 5;
@@ -125,7 +127,7 @@
             // 
             // minVolumeBox
             // 
-            this.minVolumeBox.Location = new System.Drawing.Point(67, 18);
+            this.minVolumeBox.Location = new System.Drawing.Point(67, 21);
             this.minVolumeBox.Name = "minVolumeBox";
             this.minVolumeBox.Size = new System.Drawing.Size(100, 22);
             this.minVolumeBox.TabIndex = 4;
@@ -168,18 +170,27 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(173, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "-";
             // 
             // MainForm
             // 
@@ -223,6 +234,7 @@
         private System.Windows.Forms.TextBox maxVolumeBox;
         private System.Windows.Forms.TextBox minVolumeBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

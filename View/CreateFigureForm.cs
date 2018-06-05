@@ -16,7 +16,7 @@ namespace View
     /// </summary>
     public partial class CreateFigureForm : Form
     {
-        public IFigure figure { get; private set; }
+        public IFigure Figure { get; private set; }
 
         /// <summary>
         /// Конструктор класса CreateFigureForm
@@ -31,7 +31,7 @@ namespace View
             SphereGroup.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             BackToMain();
         }
@@ -41,7 +41,7 @@ namespace View
             BackToMain();
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
         {
             if ((SelectFigureBox.SelectedIndex > -1) && (SelectFigureBox.SelectedIndex < 3))
             {
@@ -55,7 +55,7 @@ namespace View
                     if ((a < max) && (b < max) && (c < max)
                         && (a > 0) && (b > 0) && (c > 0))
                     {
-                        figure = new Parallelepiped(a, b, c);
+                        Figure = new Parallelepiped(a, b, c);
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace View
                     if ((baseArea < max) && (height < max)
                         && (baseArea > 0) && (height > 0))
                     {
-                        figure = new Pyramid(baseArea, height);
+                        Figure = new Pyramid(baseArea, height);
                     }
                     else
                     {
@@ -89,7 +89,7 @@ namespace View
 
                     if ((radius < max) && (radius > 0))
                     {
-                        figure = new Sphere(radius);
+                        Figure = new Sphere(radius);
                     }
                     else
                     {
@@ -135,32 +135,32 @@ namespace View
 
         }
 
-        private void heightBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void HeightBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
 
-        private void baseAreaBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void BaseAreaBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
 
-        private void radiusBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void RadiusBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
 
-        private void sideABox_KeyPress(object sender, KeyPressEventArgs e)
+        private void SideABox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
 
-        private void sideBBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void SideBBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
 
-        private void sideCBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void SideCBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             PressDigit(e);
         }
@@ -184,12 +184,12 @@ namespace View
             PyramidGroup.Visible = false;
             ParallelepipedGroup.Visible = false;
 
-            radiusBox.Clear();
-            heightBox.Clear();
-            baseAreaBox.Clear();
-            sideABox.Clear();
-            sideBBox.Clear();
-            sideCBox.Clear();
+            radiusBox.Text = "0";
+            heightBox.Text = "0";
+            baseAreaBox.Text = "0";
+            sideABox.Text = "0";
+            sideBBox.Text = "0";
+            sideCBox.Text = "0";
             SelectFigureBox.SelectedIndex = -1;
 
             this.Hide();
@@ -197,7 +197,91 @@ namespace View
 
         private void SelectFigureBox_VisibleChanged(object sender, EventArgs e)
         {
-            figure = null;
+            Figure = null;
+        }
+
+        private void HeightBox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void BaseAreaBox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void SideABox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void SideBBox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void SideCBox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void RadiusBox_Enter(object sender, EventArgs e)
+        {
+            EnterTextBox(sender);
+        }
+
+        private void EnterTextBox(object sender)
+        {
+            if (sender is TextBox)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox.Text == "0")
+                {
+                    textBox.Text = String.Empty;
+                }
+            }
+        }
+
+        private void HeightBox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void BaseAreaBox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void SideABox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void SideBBox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void SideCBox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void RadiusBox_Leave(object sender, EventArgs e)
+        {
+            LeaveTextBox(sender);
+        }
+
+        private void LeaveTextBox(object sender)
+        {
+            if (sender is TextBox)
+            {
+                TextBox textBox = sender as TextBox;
+                if (textBox.Text == String.Empty)
+                {
+                    textBox.Text = "0";
+                }
+            }
         }
     }
 }

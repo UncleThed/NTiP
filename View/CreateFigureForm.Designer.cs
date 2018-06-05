@@ -76,7 +76,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // okButton
             // 
@@ -87,7 +87,7 @@
             this.okButton.TabIndex = 2;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.okButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // label1
             // 
@@ -149,7 +149,9 @@
             this.sideABox.Size = new System.Drawing.Size(100, 22);
             this.sideABox.TabIndex = 17;
             this.sideABox.Text = "0";
-            this.sideABox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideABox_KeyPress);
+            this.sideABox.Enter += new System.EventHandler(this.SideABox_Enter);
+            this.sideABox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideABox_KeyPress);
+            this.sideABox.Leave += new System.EventHandler(this.SideABox_Leave);
             // 
             // sideBBox
             // 
@@ -158,7 +160,9 @@
             this.sideBBox.Size = new System.Drawing.Size(100, 22);
             this.sideBBox.TabIndex = 15;
             this.sideBBox.Text = "0";
-            this.sideBBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideBBox_KeyPress);
+            this.sideBBox.Enter += new System.EventHandler(this.SideBBox_Enter);
+            this.sideBBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideBBox_KeyPress);
+            this.sideBBox.Leave += new System.EventHandler(this.SideBBox_Leave);
             // 
             // sideCBox
             // 
@@ -167,7 +171,9 @@
             this.sideCBox.Size = new System.Drawing.Size(100, 22);
             this.sideCBox.TabIndex = 16;
             this.sideCBox.Text = "0";
-            this.sideCBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sideCBox_KeyPress);
+            this.sideCBox.Enter += new System.EventHandler(this.SideCBox_Enter);
+            this.sideCBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideCBox_KeyPress);
+            this.sideCBox.Leave += new System.EventHandler(this.SideCBox_Leave);
             // 
             // PyramidGroup
             // 
@@ -190,7 +196,9 @@
             this.baseAreaBox.Size = new System.Drawing.Size(100, 22);
             this.baseAreaBox.TabIndex = 14;
             this.baseAreaBox.Text = "0";
-            this.baseAreaBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.baseAreaBox_KeyPress);
+            this.baseAreaBox.Enter += new System.EventHandler(this.BaseAreaBox_Enter);
+            this.baseAreaBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BaseAreaBox_KeyPress);
+            this.baseAreaBox.Leave += new System.EventHandler(this.BaseAreaBox_Leave);
             // 
             // label5
             // 
@@ -209,7 +217,9 @@
             this.heightBox.TabIndex = 13;
             this.heightBox.Tag = "";
             this.heightBox.Text = "0";
-            this.heightBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.heightBox_KeyPress);
+            this.heightBox.Enter += new System.EventHandler(this.HeightBox_Enter);
+            this.heightBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightBox_KeyPress);
+            this.heightBox.Leave += new System.EventHandler(this.HeightBox_Leave);
             // 
             // label6
             // 
@@ -239,7 +249,9 @@
             this.radiusBox.Size = new System.Drawing.Size(100, 22);
             this.radiusBox.TabIndex = 14;
             this.radiusBox.Text = "0";
-            this.radiusBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.radiusBox_KeyPress);
+            this.radiusBox.Enter += new System.EventHandler(this.RadiusBox_Enter);
+            this.radiusBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RadiusBox_KeyPress);
+            this.radiusBox.Leave += new System.EventHandler(this.RadiusBox_Leave);
             // 
             // label8
             // 
