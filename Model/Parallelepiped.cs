@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Параллелепипед
     /// </summary>
+    [DataContract]
     public class Parallelepiped : IFigure
     {
+        [DataMember]
         private int _a;
+
+        [DataMember]
         private int _b;
+
+        [DataMember]
         private int _c;
 
         /// <summary>
@@ -79,9 +86,17 @@ namespace Model
         /// Расчитать площадь параллелепипеда
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return A * B * C;
+            get { return A * B * C; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Parallelepiped"; }
         }
     }
 }

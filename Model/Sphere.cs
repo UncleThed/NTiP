@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Шар
     /// </summary>
+    [DataContract]
     public class Sphere : IFigure
     {
+        [DataMember]
         private int _radius;
 
         /// <summary>
@@ -42,9 +45,17 @@ namespace Model
         /// Расчитать объем шара
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return Math.PI * Radius * Radius * Radius * 4.0 / 3.0;
+            get { return Math.PI * Radius * Radius * Radius * 4.0 / 3.0; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Sphere"; }
         }
     }
 }

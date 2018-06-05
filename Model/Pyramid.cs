@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Пирамида
     /// </summary>
+    [DataContract]
     public class Pyramid : IFigure
     {
+        [DataMember]
         private int _baseArea;
+
+        [DataMember]
         private int _height;
 
         /// <summary>
@@ -61,9 +66,17 @@ namespace Model
         /// Расчитать объем пирамиды
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return BaseArea * Height / 3.0;
+            get { return BaseArea * Height / 3.0; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Pyramid"; }
         }
     }
 }
