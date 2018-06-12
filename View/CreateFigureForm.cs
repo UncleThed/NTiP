@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 
@@ -50,16 +44,15 @@ namespace View
                     int a = Convert.ToInt32(sideABox.Text);
                     int b = Convert.ToInt32(sideBBox.Text);
                     int c = Convert.ToInt32(sideCBox.Text);
-                    double max = Math.Pow(Int32.MaxValue, 1.0 / 3);
 
-                    if ((a < max) && (b < max) && (c < max)
+                    if ((a <= 1000) && (b <= 1000) && (c <= 1000)
                         && (a > 0) && (b > 0) && (c > 0))
                     {
-                        Figure = new Parallelepiped(a, b, c);
+                        Figure = new Parallelepiped((uint)a, (uint)b, (uint)c);
                     }
                     else
                     {
-                        MessageBox.Show("Параметры должны быть больше 0 и не превышать 1290", "Error",
+                        MessageBox.Show("Параметры должны быть больше 0 и не превышать 1000", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
@@ -69,27 +62,26 @@ namespace View
                 {
                     int baseArea = Convert.ToInt32(baseAreaBox.Text);
                     int height = Convert.ToInt32(heightBox.Text);
-                    double max = Math.Pow(Int32.MaxValue, 1.0 / 2);
 
-                    if ((baseArea < max) && (height < max)
+                    if ((baseArea <= 100000) && (height <= 800)
                         && (baseArea > 0) && (height > 0))
                     {
-                        Figure = new Pyramid(baseArea, height);
+                        Figure = new Pyramid((uint)baseArea, (uint)height);
                     }
                     else
                     {
-                        MessageBox.Show("Параметры должны быть больше 0 и не превышать 46340", "Error",
+                        MessageBox.Show("Площадь основания должна быть больше 0 и не превышать 100000\n" +
+                                        "Высота должна быть больше 0 и не превышать 800", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
                     int radius = Convert.ToInt32(radiusBox.Text);
-                    double max = Math.Pow(Int32.MaxValue * 3.0 / 4.0 / Math.PI, 1.0 / 3);
 
-                    if ((radius < max) && (radius > 0))
+                    if ((radius <= 800) && (radius > 0))
                     {
-                        Figure = new Sphere(radius);
+                        Figure = new Sphere((uint)radius);
                     }
                     else
                     {
@@ -127,11 +119,6 @@ namespace View
                 SphereGroup.Location = new Point(9, 75);
 
             }
-
-        }
-
-        private void ParallelepipedGroup_Enter(object sender, EventArgs e)
-        {
 
         }
 

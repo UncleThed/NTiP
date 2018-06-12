@@ -14,59 +14,68 @@ namespace Model
     public class Parallelepiped : IFigure
     {
         [DataMember]
-        private int _a;
+        private uint _a;
 
         [DataMember]
-        private int _b;
+        private uint _b;
 
         [DataMember]
-        private int _c;
+        private uint _c;
 
         /// <summary>
         /// Сторона A
         /// </summary>
-        public int A
+        public uint A
         {
             get { return _a; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _a = value;
+                else
+                {
+                    _a = value;
+                }
             }
         }
 
         /// <summary>
         /// Сторона B
         /// </summary>
-        public int B
+        public uint B
         {
             get { return _b; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _b = value;
+                else
+                {
+                    _b = value;
+                }
             }
         }
 
         /// <summary>
         /// Сторона C
         /// </summary>
-        public int C
+        public uint C
         {
             get { return _c; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _c = value;
+                else
+                {
+                    _c = value;
+                }
             }
         }
 
@@ -75,7 +84,7 @@ namespace Model
         /// </summary>
         /// <param name="baseArea"></param>
         /// <param name="heigth"></param>
-        public Parallelepiped(int a, int b, int c)
+        public Parallelepiped(uint a, uint b, uint c)
         {
             A = a;
             B = b;
@@ -88,7 +97,7 @@ namespace Model
         /// <returns></returns>
         public double Volume
         {
-            get { return A * B * C; }
+            get { return (double)A * B * C; }
         }
 
         /// <summary>

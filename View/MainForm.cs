@@ -21,7 +21,7 @@ namespace View
         List<IFigure> _figures;
         CreateFigureForm _createFigureForm;
         DataContractJsonSerializer _serializer;
-
+        
         /// <summary>
         /// Конструктор класса GetVolumeForm
         /// </summary>
@@ -181,18 +181,18 @@ namespace View
                             int a = rand.Next(1, 50);
                             int b = rand.Next(1, 50);
                             int c = rand.Next(1, 50);
-                            bindingSource.Add(new Parallelepiped(a, b, c));
+                            bindingSource.Add(new Parallelepiped((uint)a, (uint)b, (uint)c));
                         }
                         else if (type == 1)
                         {
-                            int baseArea = rand.Next(1, 10000);
-                            int height = rand.Next(1, 200);
-                            bindingSource.Add(new Pyramid(baseArea, height));
+                            int baseArea = rand.Next(1, 1000);
+                            int height = rand.Next(1, 20);
+                            bindingSource.Add(new Pyramid((uint)baseArea, (uint)height));
                         }
                         else
                         {
-                            int radius = rand.Next(1, 500);
-                            bindingSource.Add(new Sphere(radius));
+                            int radius = rand.Next(1, 100);
+                            bindingSource.Add(new Sphere((uint)radius));
                         }
                     }
 #endif

@@ -14,40 +14,46 @@ namespace Model
     public class Pyramid : IFigure
     {
         [DataMember]
-        private int _baseArea;
+        private uint _baseArea;
 
         [DataMember]
-        private int _height;
+        private uint _height;
 
         /// <summary>
         /// Площадь основания
         /// </summary>
-        public int BaseArea
+        public uint BaseArea
         {
             get { return _baseArea; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Отрицательная площадь");
                 }
-                _baseArea = value;
+                else
+                {
+                    _baseArea = value;
+                }
             }
         }
         
         /// <summary>
         /// Высота
         /// </summary>
-        public int Height
+        public uint Height
         {
             get { return _height; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Отрицательная высота");
                 }
-                _height = value;
+                else
+                {
+                    _height = value;
+                }
             }
         }
 
@@ -56,7 +62,7 @@ namespace Model
         /// </summary>
         /// <param name="baseArea"></param>
         /// <param name="heigth"></param>
-        public Pyramid(int baseArea, int heigth)
+        public Pyramid(uint baseArea, uint heigth)
         {
             BaseArea = baseArea;
             Height = heigth;
@@ -68,7 +74,7 @@ namespace Model
         /// <returns></returns>
         public double Volume
         {
-            get { return BaseArea * Height / 3.0; }
+            get { return BaseArea / 3.0 * Height; }
         }
 
         /// <summary>

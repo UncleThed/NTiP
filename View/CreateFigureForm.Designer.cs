@@ -140,7 +140,6 @@
             this.ParallelepipedGroup.TabIndex = 10;
             this.ParallelepipedGroup.TabStop = false;
             this.ParallelepipedGroup.Visible = false;
-            this.ParallelepipedGroup.Enter += new System.EventHandler(this.ParallelepipedGroup_Enter);
             // 
             // sideABox
             // 

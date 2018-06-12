@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GridControl = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.maxVolumeBox = new System.Windows.Forms.TextBox();
             this.DataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.removeButton = new System.Windows.Forms.Button();
             this.minVolumeBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
@@ -45,7 +44,8 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GridControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -69,6 +69,15 @@
             this.GridControl.Size = new System.Drawing.Size(361, 331);
             this.GridControl.TabIndex = 0;
             this.GridControl.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(173, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "-";
             // 
             // label1
             // 
@@ -99,20 +108,9 @@
             this.Column2});
             this.DataGridView.Location = new System.Drawing.Point(6, 79);
             this.DataGridView.Name = "DataGridView";
+            this.DataGridView.RowHeadersVisible = false;
             this.DataGridView.Size = new System.Drawing.Size(326, 179);
             this.DataGridView.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Type";
-            this.Column1.HeaderText = "Figure";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Volume";
-            this.Column2.HeaderText = "Volume";
-            this.Column2.Name = "Column2";
             // 
             // removeButton
             // 
@@ -183,14 +181,19 @@
             // 
             this.openFileDialog.FileName = "openFileDialog1";
             // 
-            // label2
+            // Column1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "-";
+            this.Column1.DataPropertyName = "Type";
+            this.Column1.HeaderText = "Figure";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Volume";
+            this.Column2.HeaderText = "Volume";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 120;
             // 
             // MainForm
             // 
@@ -222,8 +225,6 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.DataGridView DataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -235,6 +236,8 @@
         private System.Windows.Forms.TextBox minVolumeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
 
