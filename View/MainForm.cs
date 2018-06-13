@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,9 +19,8 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
-        List<IFigure> _figures;
-        CreateFigureForm _createFigureForm;
-        DataContractJsonSerializer _serializer;
+        private List<IFigure> _figures;
+        private DataContractJsonSerializer _serializer;
         
         /// <summary>
         /// Конструктор класса GetVolumeForm
@@ -29,7 +29,6 @@ namespace View
         {
             InitializeComponent();
             _figures = new List<IFigure>();
-            _createFigureForm = new CreateFigureForm();
 
             bindingSource.DataSource = _figures;
             DataGridView.DataSource = bindingSource;
@@ -44,16 +43,53 @@ namespace View
             _serializer = new DataContractJsonSerializer(typeof(List<IFigure>), knownTypeList);
         }
 
-        private void AddFigure_Click(object sender, EventArgs e)
+        //private void UpdateControls()
+        //{
+        //    parallelepipedControl.Visible = false;
+        //    pyramidControl.Visible = false;
+        //    SphereControl.Visible = false;
+
+        //    bookControl1.ReadOnly = true;
+        //    journalControl1.ReadOnly = true;
+        //    dissertationControl.ReadOnly = true;
+        //}
+
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            _createFigureForm.ShowDialog();
-            if (_createFigureForm.Figure != null)
+            //UpdateControls();
+            CreateFigureForm addFigureForm = new CreateFigureForm()
             {
-                bindingSource.Add(_createFigureForm.Figure);
+                ReadOnly = false
+            };
+
+            addFigureForm.ShowDialog();
+
+            if (addFigureForm.DialogResult != DialogResult.OK) return;
+            if (addFigureForm.Figure != null)
+            {
+                bindingSource.Add(addFigureForm.Figure);
             }
         }
 
-        private void RemoveFigure_Click(object sender, EventArgs e)
+        private void ModifyButton_Click(object sender, EventArgs e)
+        {
+            //UpdateControls();
+            CreateFigureForm modifyFigureForm = new CreateFigureForm()
+            {
+                Figure = _figures[DataGridView.CurrentRow.Index],
+                ReadOnly = false
+            };
+
+            modifyFigureForm.ShowDialog();
+
+            if (modifyFigureForm.DialogResult != DialogResult.OK) return;
+            if (modifyFigureForm.Figure != null)
+            {
+                _figures[DataGridView.CurrentRow.Index] = modifyFigureForm.Figure;
+            }
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
         {
             if (DataGridView.SelectedCells.Count > 0)
             {

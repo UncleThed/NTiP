@@ -30,10 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GridControl = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.maxVolumeBox = new System.Windows.Forms.TextBox();
             this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.removeButton = new System.Windows.Forms.Button();
             this.minVolumeBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
@@ -44,8 +47,6 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GridControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -57,6 +58,7 @@
             this.GridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridControl.Controls.Add(this.button1);
             this.GridControl.Controls.Add(this.label2);
             this.GridControl.Controls.Add(this.label1);
             this.GridControl.Controls.Add(this.maxVolumeBox);
@@ -69,6 +71,17 @@
             this.GridControl.Size = new System.Drawing.Size(361, 331);
             this.GridControl.TabIndex = 0;
             this.GridControl.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(124, 290);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 35);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Modify";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ModifyButton_Click);
             // 
             // label2
             // 
@@ -109,19 +122,33 @@
             this.DataGridView.Location = new System.Drawing.Point(6, 79);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowHeadersVisible = false;
-            this.DataGridView.Size = new System.Drawing.Size(326, 179);
+            this.DataGridView.Size = new System.Drawing.Size(326, 195);
             this.DataGridView.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Type";
+            this.Column1.HeaderText = "Figure";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Volume";
+            this.Column2.HeaderText = "Volume";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 120;
             // 
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeButton.Location = new System.Drawing.Point(173, 270);
+            this.removeButton.Location = new System.Drawing.Point(242, 290);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(159, 35);
+            this.removeButton.Size = new System.Drawing.Size(113, 35);
             this.removeButton.TabIndex = 1;
-            this.removeButton.Text = "Remove Figure";
+            this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.RemoveFigure_Click);
+            this.removeButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // minVolumeBox
             // 
@@ -135,13 +162,13 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addButton.Location = new System.Drawing.Point(6, 270);
+            this.addButton.Location = new System.Drawing.Point(6, 290);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(161, 35);
+            this.addButton.Size = new System.Drawing.Size(112, 35);
             this.addButton.TabIndex = 0;
-            this.addButton.Text = "Add Figure";
+            this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.AddFigure_Click);
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // menu
             // 
@@ -180,20 +207,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Type";
-            this.Column1.HeaderText = "Figure";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Volume";
-            this.Column2.HeaderText = "Volume";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
             // 
             // MainForm
             // 
@@ -238,6 +251,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
