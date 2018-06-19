@@ -38,14 +38,16 @@
             // 
             // PyramidGroup
             // 
-            this.PyramidGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PyramidGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PyramidGroup.Controls.Add(this.baseAreaBox);
             this.PyramidGroup.Controls.Add(this.label5);
             this.PyramidGroup.Controls.Add(this.heightBox);
             this.PyramidGroup.Controls.Add(this.label6);
-            this.PyramidGroup.Location = new System.Drawing.Point(51, 25);
+            this.PyramidGroup.Location = new System.Drawing.Point(3, 0);
             this.PyramidGroup.Name = "PyramidGroup";
-            this.PyramidGroup.Size = new System.Drawing.Size(230, 150);
+            this.PyramidGroup.Size = new System.Drawing.Size(194, 117);
             this.PyramidGroup.TabIndex = 15;
             this.PyramidGroup.TabStop = false;
             // 
@@ -56,7 +58,6 @@
             this.baseAreaBox.Size = new System.Drawing.Size(100, 22);
             this.baseAreaBox.TabIndex = 14;
             this.baseAreaBox.Text = "0";
-            this.baseAreaBox.TextChanged += new System.EventHandler(this.BaseAreaBox_TextChanged);
             this.baseAreaBox.Enter += new System.EventHandler(this.BaseAreaBox_Enter);
             this.baseAreaBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BaseAreaBox_KeyPress);
             this.baseAreaBox.Leave += new System.EventHandler(this.BaseAreaBox_Leave);
@@ -78,7 +79,6 @@
             this.heightBox.TabIndex = 13;
             this.heightBox.Tag = "";
             this.heightBox.Text = "0";
-            this.heightBox.TextChanged += new System.EventHandler(this.HeightBox_TextChanged);
             this.heightBox.Enter += new System.EventHandler(this.HeightBox_Enter);
             this.heightBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightBox_KeyPress);
             this.heightBox.Leave += new System.EventHandler(this.HeightBox_Leave);
@@ -98,7 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PyramidGroup);
             this.Name = "PyramidControl";
-            this.Size = new System.Drawing.Size(332, 200);
+            this.Size = new System.Drawing.Size(200, 120);
             this.PyramidGroup.ResumeLayout(false);
             this.PyramidGroup.PerformLayout();
             this.ResumeLayout(false);

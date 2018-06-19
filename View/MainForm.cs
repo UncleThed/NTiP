@@ -33,6 +33,8 @@ namespace View
             bindingSource.DataSource = _figures;
             DataGridView.DataSource = bindingSource;
 
+            HideControls();
+
             List<Type> knownTypeList = new List<Type>
             {
                 typeof(Parallelepiped),
@@ -43,20 +45,15 @@ namespace View
             _serializer = new DataContractJsonSerializer(typeof(List<IFigure>), knownTypeList);
         }
 
-        //private void UpdateControls()
-        //{
-        //    parallelepipedControl.Visible = false;
-        //    pyramidControl.Visible = false;
-        //    SphereControl.Visible = false;
-
-        //    bookControl1.ReadOnly = true;
-        //    journalControl1.ReadOnly = true;
-        //    dissertationControl.ReadOnly = true;
-        //}
+        private void HideControls()
+        {
+            parallelepipedInfoControl.Visible = false;
+            pyramidInfoControl.Visible = false;
+            sphereInfoControl.Visible = false;
+        }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            //UpdateControls();
             CreateFigureForm addFigureForm = new CreateFigureForm()
             {
                 ReadOnly = false
@@ -73,9 +70,9 @@ namespace View
 
         private void ModifyButton_Click(object sender, EventArgs e)
         {
-            //UpdateControls();
             CreateFigureForm modifyFigureForm = new CreateFigureForm()
             {
+                
                 Figure = _figures[DataGridView.CurrentRow.Index],
                 ReadOnly = false
             };
@@ -83,10 +80,11 @@ namespace View
             modifyFigureForm.ShowDialog();
 
             if (modifyFigureForm.DialogResult != DialogResult.OK) return;
-            if (modifyFigureForm.Figure != null)
-            {
-                _figures[DataGridView.CurrentRow.Index] = modifyFigureForm.Figure;
-            }
+            if (modifyFigureForm.Figure == null) return;
+
+            _figures[DataGridView.CurrentRow.Index] = modifyFigureForm.Figure;
+            bindingSource.ResetCurrentItem();
+            HideControls();
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
@@ -95,6 +93,7 @@ namespace View
             {
                 int index = DataGridView.SelectedCells[0].RowIndex;
                 DataGridView.Rows.RemoveAt(index);
+                HideControls();
             }
         }
 
@@ -108,19 +107,16 @@ namespace View
             {
                 return;
             }
-            else
+
+            FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate);
+            List<IFigure> deserializeFigures = (List<IFigure>)_serializer.ReadObject(fileStream);
+            fileStream.Dispose();
+
+            bindingSource.Clear();
+
+            foreach (IFigure figure in deserializeFigures)
             {
-
-                FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate);
-                List<IFigure> deserializeFigures = (List<IFigure>)_serializer.ReadObject(fileStream);
-                fileStream.Dispose();
-
-                bindingSource.Clear();
-
-                foreach (IFigure figure in deserializeFigures)
-                {
-                    bindingSource.Add(figure);
-                }
+                bindingSource.Add(figure);
             }
 
         }
@@ -135,13 +131,10 @@ namespace View
             {
                 return;
             }
-            else
-            {
 
-                FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
-                _serializer.WriteObject(fileStream, _figures);
-                fileStream.Dispose();
-            }
+            FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate);
+            _serializer.WriteObject(fileStream, _figures);
+            fileStream.Dispose();
         }
 
         private void MinVolumeBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -232,6 +225,41 @@ namespace View
                         }
                     }
 #endif
+                    break;
+            }
+        }
+
+        private void DataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridView.CurrentRow == null) return;
+            var figure = _figures[DataGridView.CurrentRow.Index];
+            ChangeControl(figure);
+        }
+
+        private void ChangeControl(IFigure figure)
+        {
+            switch (figure)
+            {
+                case Parallelepiped parallelepiped:
+                    parallelepipedInfoControl.Visible = true;
+                    pyramidInfoControl.Visible = false;
+                    sphereInfoControl.Visible = false;
+                    pyramidInfoControl.ReadOnly = true;
+                    parallelepipedInfoControl.Parallelepiped = parallelepiped;
+                    break;
+                case Pyramid pyramid:
+                    pyramidInfoControl.Visible = true;
+                    parallelepipedInfoControl.Visible = false;
+                    sphereInfoControl.Visible = false;
+                    pyramidInfoControl.ReadOnly = true;
+                    pyramidInfoControl.Pyramid = pyramid;
+                    break;
+                case Sphere sphere:
+                    sphereInfoControl.Visible = true;
+                    parallelepipedInfoControl.Visible = false;
+                    pyramidInfoControl.Visible = false;
+                    sphereInfoControl.ReadOnly = true;
+                    sphereInfoControl.Sphere = sphere;
                     break;
             }
         }

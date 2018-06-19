@@ -36,12 +36,14 @@
             // 
             // SphereGroup
             // 
-            this.SphereGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SphereGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SphereGroup.Controls.Add(this.radiusBox);
             this.SphereGroup.Controls.Add(this.label8);
-            this.SphereGroup.Location = new System.Drawing.Point(28, 19);
+            this.SphereGroup.Location = new System.Drawing.Point(3, 3);
             this.SphereGroup.Name = "SphereGroup";
-            this.SphereGroup.Size = new System.Drawing.Size(230, 150);
+            this.SphereGroup.Size = new System.Drawing.Size(194, 114);
             this.SphereGroup.TabIndex = 13;
             this.SphereGroup.TabStop = false;
             // 
@@ -52,7 +54,6 @@
             this.radiusBox.Size = new System.Drawing.Size(100, 22);
             this.radiusBox.TabIndex = 14;
             this.radiusBox.Text = "0";
-            this.radiusBox.TextChanged += new System.EventHandler(this.radiusBox_TextChanged);
             this.radiusBox.Enter += new System.EventHandler(this.RadiusBox_Enter);
             this.radiusBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RadiusBox_KeyPress);
             this.radiusBox.Leave += new System.EventHandler(this.RadiusBox_Leave);
@@ -72,7 +73,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SphereGroup);
             this.Name = "SphereControl";
-            this.Size = new System.Drawing.Size(286, 188);
+            this.Size = new System.Drawing.Size(200, 120);
             this.SphereGroup.ResumeLayout(false);
             this.SphereGroup.PerformLayout();
             this.ResumeLayout(false);

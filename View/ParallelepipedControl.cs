@@ -13,9 +13,6 @@ namespace View
 {
     public partial class ParallelepipedControl : UserControl
     {
-        private uint _a = 0;
-        private uint _b = 0;
-        private uint _c = 0;
 
         public ParallelepipedControl()
         {
@@ -26,10 +23,14 @@ namespace View
         {
             get
             {
-                if ((_a <= 1000) && (_b <= 1000) && (_c <= 1000)
-                    && (_a > 0) && (_b > 0) && (_c > 0))
+                var a = sideABox.Text != string.Empty ? Convert.ToUInt32(sideABox.Text) : 0;
+                var b = sideBBox.Text != string.Empty ? Convert.ToUInt32(sideBBox.Text) : 0;
+                var c = sideCBox.Text != string.Empty ? Convert.ToUInt32(sideCBox.Text) : 0;
+
+                if ((a <= 1000) && (b <= 1000) && (c <= 1000)
+                    && (a > 0) && (b > 0) && (c > 0))
                 {
-                    return new Parallelepiped(_a, _b, _c);
+                    return new Parallelepiped(a, b, c);
                 }
                 else
                 {
@@ -42,14 +43,24 @@ namespace View
             set
             {
                 if (value == null) return;
-                sideABox.Text = Convert.ToString((value as Parallelepiped).A);
-                sideBBox.Text = Convert.ToString((value as Parallelepiped).B);
-                sideCBox.Text = Convert.ToString((value as Parallelepiped).C);
+                sideABox.Text = Convert.ToString(value.A);
+                sideBBox.Text = Convert.ToString(value.B);
+                sideCBox.Text = Convert.ToString(value.C);
             }
 
         }
 
-        public bool ReadOnly { get; set; } = true;
+        public bool ReadOnly
+        {
+            get => sideABox.ReadOnly;
+
+            set
+            {
+                sideABox.ReadOnly = value;
+                sideBBox.ReadOnly = value;
+                sideCBox.ReadOnly = value;
+            }
+        }
 
 
         private void SideABox_Enter(object sender, EventArgs e)
@@ -126,21 +137,6 @@ namespace View
             {
                 e.Handled = true;
             }
-        }
-
-        private void sideABox_TextChanged(object sender, EventArgs e)
-        {
-            _a = sideABox.Text != string.Empty ? Convert.ToUInt32(sideABox.Text) : 0;
-        }
-
-        private void sideBBox_TextChanged(object sender, EventArgs e)
-        {
-            _b = sideBBox.Text != string.Empty ? Convert.ToUInt32(sideBBox.Text) : 0;
-        }
-
-        private void sideCBox_TextChanged(object sender, EventArgs e)
-        {
-            _c = sideCBox.Text != string.Empty ? Convert.ToUInt32(sideCBox.Text) : 0;
         }
     }
 }

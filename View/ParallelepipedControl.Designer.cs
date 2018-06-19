@@ -40,16 +40,18 @@
             // 
             // ParallelepipedGroup
             // 
-            this.ParallelepipedGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ParallelepipedGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ParallelepipedGroup.Controls.Add(this.sideABox);
             this.ParallelepipedGroup.Controls.Add(this.sideBBox);
             this.ParallelepipedGroup.Controls.Add(this.sideCBox);
             this.ParallelepipedGroup.Controls.Add(this.label2);
             this.ParallelepipedGroup.Controls.Add(this.label3);
             this.ParallelepipedGroup.Controls.Add(this.label4);
-            this.ParallelepipedGroup.Location = new System.Drawing.Point(7, 1);
+            this.ParallelepipedGroup.Location = new System.Drawing.Point(3, 1);
             this.ParallelepipedGroup.Name = "ParallelepipedGroup";
-            this.ParallelepipedGroup.Size = new System.Drawing.Size(235, 149);
+            this.ParallelepipedGroup.Size = new System.Drawing.Size(194, 116);
             this.ParallelepipedGroup.TabIndex = 11;
             this.ParallelepipedGroup.TabStop = false;
             // 
@@ -60,7 +62,6 @@
             this.sideABox.Size = new System.Drawing.Size(100, 22);
             this.sideABox.TabIndex = 17;
             this.sideABox.Text = "0";
-            this.sideABox.TextChanged += new System.EventHandler(this.sideABox_TextChanged);
             this.sideABox.Enter += new System.EventHandler(this.SideABox_Enter);
             this.sideABox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideABox_KeyPress);
             this.sideABox.Leave += new System.EventHandler(this.SideABox_Leave);
@@ -72,7 +73,6 @@
             this.sideBBox.Size = new System.Drawing.Size(100, 22);
             this.sideBBox.TabIndex = 15;
             this.sideBBox.Text = "0";
-            this.sideBBox.TextChanged += new System.EventHandler(this.sideBBox_TextChanged);
             this.sideBBox.Enter += new System.EventHandler(this.SideBBox_Enter);
             this.sideBBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideBBox_KeyPress);
             this.sideBBox.Leave += new System.EventHandler(this.SideBBox_Leave);
@@ -84,7 +84,6 @@
             this.sideCBox.Size = new System.Drawing.Size(100, 22);
             this.sideCBox.TabIndex = 16;
             this.sideCBox.Text = "0";
-            this.sideCBox.TextChanged += new System.EventHandler(this.sideCBox_TextChanged);
             this.sideCBox.Enter += new System.EventHandler(this.SideCBox_Enter);
             this.sideCBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideCBox_KeyPress);
             this.sideCBox.Leave += new System.EventHandler(this.SideCBox_Leave);
@@ -122,7 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ParallelepipedGroup);
             this.Name = "ParallelepipedControl";
-            this.Size = new System.Drawing.Size(245, 153);
+            this.Size = new System.Drawing.Size(200, 120);
             this.ParallelepipedGroup.ResumeLayout(false);
             this.ParallelepipedGroup.PerformLayout();
             this.ResumeLayout(false);

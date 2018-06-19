@@ -13,9 +13,6 @@ namespace View
 {
     public partial class PyramidControl : UserControl
     {
-        private uint _baseArea = 0;
-        private uint _height = 0;
-
         public PyramidControl()
         {
             InitializeComponent();
@@ -25,28 +22,36 @@ namespace View
         {
             get
             {
-                if ((_baseArea <= 100000) && (_height <= 800)
-                                         && (_baseArea > 0) && (_height > 0))
+                var height = heightBox.Text != string.Empty ? Convert.ToUInt32(heightBox.Text) : 0;
+                var baseArea = baseAreaBox.Text != string.Empty ? Convert.ToUInt32(baseAreaBox.Text) : 0;
+                if ((baseArea <= 100000) && (height <= 800)
+                                         && (baseArea > 0) && (height > 0))
                 {
-                    return new Pyramid(_baseArea, _height);
+                    return new Pyramid(baseArea, height);
                 }
-                else
-                {
-                    MessageBox.Show("Площадь основания должна быть больше 0 и не превышать 100000\n" +
-                                    "Высота должна быть больше 0 и не превышать 800", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
+
+                MessageBox.Show("Площадь основания должна быть больше 0 и не превышать 100000\n" +
+                                "Высота должна быть больше 0 и не превышать 800", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
             set
             {
                 if (value == null) return;
-                baseAreaBox.Text = Convert.ToString((value as Pyramid).BaseArea);
-                heightBox.Text = Convert.ToString((value as Pyramid).Height);
+                baseAreaBox.Text = Convert.ToString(value.BaseArea);
+                heightBox.Text = Convert.ToString(value.Height);
             }
         }
 
-        public bool ReadOnly { get; set; } = true;
+        public bool ReadOnly
+        {
+            get => heightBox.ReadOnly;
+            set
+            {
+                heightBox.ReadOnly = value;
+                baseAreaBox.ReadOnly = value;
+            }
+        }
 
         private void HeightBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -108,16 +113,6 @@ namespace View
             {
                 textBox.Text = "0";
             }
-        }
-
-        private void HeightBox_TextChanged(object sender, EventArgs e)
-        {
-            _height = heightBox.Text != string.Empty ? Convert.ToUInt32(heightBox.Text) : 0;
-        }
-
-        private void BaseAreaBox_TextChanged(object sender, EventArgs e)
-        {
-            _baseArea = baseAreaBox.Text != string.Empty ? Convert.ToUInt32(baseAreaBox.Text) : 0;
         }
     }
 }

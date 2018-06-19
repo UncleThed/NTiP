@@ -1,4 +1,6 @@
-﻿namespace View
+﻿using System.Windows.Forms;
+
+namespace View
 {
     partial class CreateFigureForm
     {
@@ -55,7 +57,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(12, 407);
+            this.cancelButton.Location = new System.Drawing.Point(12, 307);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(155, 34);
             this.cancelButton.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(173, 407);
+            this.okButton.Location = new System.Drawing.Point(173, 307);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(155, 34);
             this.okButton.TabIndex = 2;
@@ -86,6 +88,7 @@
             // 
             this.parallelepipedControl.Location = new System.Drawing.Point(-1, 238);
             this.parallelepipedControl.Name = "parallelepipedControl";
+            this.parallelepipedControl.Parallelepiped = null;
             this.parallelepipedControl.ReadOnly = true;
             this.parallelepipedControl.Size = new System.Drawing.Size(230, 131);
             this.parallelepipedControl.TabIndex = 13;
@@ -115,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 453);
+            this.ClientSize = new System.Drawing.Size(382, 353);
             this.Controls.Add(this.sphereControl);
             this.Controls.Add(this.pyramidControl);
             this.Controls.Add(this.parallelepipedControl);
@@ -123,7 +126,9 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.SelectFigureBox);
-            this.MinimumSize = new System.Drawing.Size(400, 350);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "CreateFigureForm";
             this.Text = "Create Figure";
             this.ResumeLayout(false);

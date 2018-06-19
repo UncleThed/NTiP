@@ -1,4 +1,6 @@
-﻿namespace View
+﻿using System.Windows.Forms;
+
+namespace View
 {
     partial class MainForm
     {
@@ -30,6 +32,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GridControl = new System.Windows.Forms.GroupBox();
+            this.sphereInfoControl = new View.SphereControl();
+            this.pyramidInfoControl = new View.PyramidControl();
+            this.parallelepipedInfoControl = new View.ParallelepipedControl();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +63,9 @@
             this.GridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GridControl.Controls.Add(this.sphereInfoControl);
+            this.GridControl.Controls.Add(this.pyramidInfoControl);
+            this.GridControl.Controls.Add(this.parallelepipedInfoControl);
             this.GridControl.Controls.Add(this.button1);
             this.GridControl.Controls.Add(this.label2);
             this.GridControl.Controls.Add(this.label1);
@@ -68,14 +76,41 @@
             this.GridControl.Controls.Add(this.addButton);
             this.GridControl.Location = new System.Drawing.Point(9, 43);
             this.GridControl.Name = "GridControl";
-            this.GridControl.Size = new System.Drawing.Size(361, 331);
+            this.GridControl.Size = new System.Drawing.Size(597, 395);
             this.GridControl.TabIndex = 0;
             this.GridControl.TabStop = false;
+            // 
+            // sphereInfoControl
+            // 
+            this.sphereInfoControl.Location = new System.Drawing.Point(360, 79);
+            this.sphereInfoControl.Name = "sphereInfoControl";
+            this.sphereInfoControl.ReadOnly = true;
+            this.sphereInfoControl.Size = new System.Drawing.Size(200, 120);
+            this.sphereInfoControl.Sphere = null;
+            this.sphereInfoControl.TabIndex = 11;
+            // 
+            // pyramidInfoControl
+            // 
+            this.pyramidInfoControl.Location = new System.Drawing.Point(360, 79);
+            this.pyramidInfoControl.Name = "pyramidInfoControl";
+            this.pyramidInfoControl.Pyramid = null;
+            this.pyramidInfoControl.ReadOnly = true;
+            this.pyramidInfoControl.Size = new System.Drawing.Size(200, 120);
+            this.pyramidInfoControl.TabIndex = 10;
+            // 
+            // parallelepipedInfoControl
+            // 
+            this.parallelepipedInfoControl.Location = new System.Drawing.Point(360, 79);
+            this.parallelepipedInfoControl.Name = "parallelepipedInfoControl";
+            this.parallelepipedInfoControl.Parallelepiped = null;
+            this.parallelepipedInfoControl.ReadOnly = true;
+            this.parallelepipedInfoControl.Size = new System.Drawing.Size(200, 120);
+            this.parallelepipedInfoControl.TabIndex = 9;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(124, 290);
+            this.button1.Location = new System.Drawing.Point(124, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 8;
@@ -122,8 +157,9 @@
             this.DataGridView.Location = new System.Drawing.Point(6, 79);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowHeadersVisible = false;
-            this.DataGridView.Size = new System.Drawing.Size(326, 195);
+            this.DataGridView.Size = new System.Drawing.Size(327, 259);
             this.DataGridView.TabIndex = 2;
+            this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
             // 
             // Column1
             // 
@@ -142,7 +178,7 @@
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeButton.Location = new System.Drawing.Point(242, 290);
+            this.removeButton.Location = new System.Drawing.Point(242, 354);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(113, 35);
             this.removeButton.TabIndex = 1;
@@ -162,7 +198,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addButton.Location = new System.Drawing.Point(6, 290);
+            this.addButton.Location = new System.Drawing.Point(6, 354);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(112, 35);
             this.addButton.TabIndex = 0;
@@ -177,7 +213,7 @@
             this.fileToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(382, 28);
+            this.menu.Size = new System.Drawing.Size(618, 28);
             this.menu.TabIndex = 1;
             this.menu.Text = "menu";
             // 
@@ -212,12 +248,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 386);
+            this.ClientSize = new System.Drawing.Size(618, 450);
             this.Controls.Add(this.GridControl);
             this.Controls.Add(this.menu);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menu;
-            this.MinimumSize = new System.Drawing.Size(400, 430);
+            this.MinimumSize = new System.Drawing.Size(636, 497);
+            this.MaximumSize = new System.Drawing.Size(636, 497);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "Three-dimensional figures";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
@@ -252,6 +290,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button button1;
+        private SphereControl sphereInfoControl;
+        private PyramidControl pyramidInfoControl;
+        private ParallelepipedControl parallelepipedInfoControl;
     }
 }
 

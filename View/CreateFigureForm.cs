@@ -20,7 +20,7 @@ namespace View
                 {
                     case 0:
                         return parallelepipedControl.Parallelepiped;
-                    case 1:
+                    case 1:    
                         return pyramidControl.Pyramid;
                     case 2:
                         return sphereControl.Sphere;
@@ -33,14 +33,17 @@ namespace View
             {
                 switch (value)
                 {
-                    case Parallelepiped _parallelepiped:
-                        parallelepipedControl.Parallelepiped = _parallelepiped;
+                    case Parallelepiped parallelepiped:
+                        SelectFigureBox.SelectedIndex = 0;
+                        parallelepipedControl.Parallelepiped = parallelepiped;
                         break;
-                    case Pyramid _pyramid:
-                        pyramidControl.Pyramid = _pyramid;
+                    case Pyramid pyramid:
+                        SelectFigureBox.SelectedIndex = 1;
+                        pyramidControl.Pyramid = pyramid;
                         break;
-                    case Sphere _sphere:
-                        sphereControl.Sphere = _sphere;
+                    case Sphere sphere:
+                        SelectFigureBox.SelectedIndex = 2;
+                        sphereControl.Sphere = sphere;
                         break;
                 }
             }
@@ -94,18 +97,6 @@ namespace View
                 sphereControl.Location = new Point(9, 75);
 
             }
-
-        }
-
-        private void BackToMain()
-        {
-            sphereControl.Visible = false;
-            parallelepipedControl.Visible = false;
-            parallelepipedControl.Visible = false;
-
-            SelectFigureBox.SelectedIndex = -1;
-
-            this.Hide();
         }
     }
 }

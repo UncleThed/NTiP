@@ -13,8 +13,6 @@ namespace View
 {
     public partial class SphereControl : UserControl
     {
-        private uint _radius = 0;
-
         public SphereControl()
         {
             InitializeComponent();
@@ -24,9 +22,10 @@ namespace View
         {
             get
             {
-                if ((_radius <= 800) && (_radius > 0))
+                var radius = radiusBox.Text != string.Empty ? Convert.ToUInt32(radiusBox.Text) : 0;
+                if ((radius <= 800) && (radius > 0))
                 {
-                    return new Sphere(_radius);
+                    return new Sphere(radius);
                 }
                 else
                 {
@@ -43,7 +42,11 @@ namespace View
             }
         }
 
-        public bool ReadOnly { get; set; } = true;
+        public bool ReadOnly
+        {
+            get => radiusBox.ReadOnly;
+            set => radiusBox.ReadOnly = value;
+        }
 
         private void RadiusBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -89,11 +92,6 @@ namespace View
             {
                 textBox.Text = "0";
             }
-        }
-
-        private void radiusBox_TextChanged(object sender, EventArgs e)
-        {
-            _radius = radiusBox.Text != string.Empty ? Convert.ToUInt32(radiusBox.Text) : 0;
         }
     }
 }
