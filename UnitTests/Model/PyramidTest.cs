@@ -15,7 +15,7 @@ namespace UnitTests.Model
         {
             var pyramid = new Pyramid(baseArea, height);
         }
-
+        
         [Test]
         [TestCase(uint.MinValue, (uint)34, TestName = "Площадь основания имеет нулевое значение")]
         [TestCase(uint.MaxValue, uint.MinValue, TestName = "Высота имеет нулевое значение")]
