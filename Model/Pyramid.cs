@@ -3,46 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Пирамида
     /// </summary>
+    [DataContract]
     public class Pyramid : IFigure
     {
-        private int _baseArea;
-        private int _height;
+        [DataMember]
+        private uint _baseArea;
+
+        [DataMember]
+        private uint _height;
 
         /// <summary>
         /// Площадь основания
         /// </summary>
-        public int BaseArea
+        public uint BaseArea
         {
             get { return _baseArea; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Отрицательная площадь");
                 }
-                _baseArea = value;
+                else
+                {
+                    _baseArea = value;
+                }
             }
         }
         
         /// <summary>
         /// Высота
         /// </summary>
-        public int Height
+        public uint Height
         {
             get { return _height; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Отрицательная высота");
                 }
-                _height = value;
+                else
+                {
+                    _height = value;
+                }
             }
         }
 
@@ -51,7 +62,7 @@ namespace Model
         /// </summary>
         /// <param name="baseArea"></param>
         /// <param name="heigth"></param>
-        public Pyramid(int baseArea, int heigth)
+        public Pyramid(uint baseArea, uint heigth)
         {
             BaseArea = baseArea;
             Height = heigth;
@@ -61,9 +72,17 @@ namespace Model
         /// Расчитать объем пирамиды
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return BaseArea * Height / 3.0;
+            get { return BaseArea / 3.0 * Height; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Pyramid"; }
         }
     }
 }

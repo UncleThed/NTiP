@@ -3,63 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Параллелепипед
     /// </summary>
+    [DataContract]
     public class Parallelepiped : IFigure
     {
-        private int _a;
-        private int _b;
-        private int _c;
+        [DataMember]
+        private uint _a;
+
+        [DataMember]
+        private uint _b;
+
+        [DataMember]
+        private uint _c;
 
         /// <summary>
         /// Сторона A
         /// </summary>
-        public int A
+        public uint A
         {
             get { return _a; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _a = value;
+                else
+                {
+                    _a = value;
+                }
             }
         }
 
         /// <summary>
         /// Сторона B
         /// </summary>
-        public int B
+        public uint B
         {
             get { return _b; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _b = value;
+                else
+                {
+                    _b = value;
+                }
             }
         }
 
         /// <summary>
         /// Сторона C
         /// </summary>
-        public int C
+        public uint C
         {
             get { return _c; }
             private set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new Exception("Длинна стороны параллелелепипеда должна быть больше нуля");
                 }
-                _c = value;
+                else
+                {
+                    _c = value;
+                }
             }
         }
 
@@ -68,7 +84,7 @@ namespace Model
         /// </summary>
         /// <param name="baseArea"></param>
         /// <param name="heigth"></param>
-        public Parallelepiped(int a, int b, int c)
+        public Parallelepiped(uint a, uint b, uint c)
         {
             A = a;
             B = b;
@@ -79,9 +95,17 @@ namespace Model
         /// Расчитать площадь параллелепипеда
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return A * B * C;
+            get { return (double)A * B * C; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Parallelepiped"; }
         }
     }
 }

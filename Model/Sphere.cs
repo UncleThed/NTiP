@@ -1,31 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Шар
     /// </summary>
+    [DataContract]
     public class Sphere : IFigure
     {
-        private int _radius;
+        [DataMember]
+        private uint _radius;
 
         /// <summary>
         /// Радиус
         /// </summary>
-        public int Radius
+        public uint Radius
         {
             get { return _radius; }
             private set
             {
-                if (value < 0.0)
+                if (value == 0)
                 {
                     throw new Exception("Отрицательный радиус");
                 }
-                _radius = value;
+                else
+                {
+                    _radius = value;
+                }
             }
         }
 
@@ -33,7 +35,7 @@ namespace Model
         /// Конструктор класса Шар
         /// </summary>
         /// <param name="radius"></param>
-        public Sphere(int radius)
+        public Sphere(uint radius)
         {
             Radius = radius;
         }
@@ -42,9 +44,17 @@ namespace Model
         /// Расчитать объем шара
         /// </summary>
         /// <returns></returns>
-        public double GetVolume()
+        public double Volume
         {
-            return Math.PI * Radius * Radius * Radius * 4.0 / 3.0;
+            get { return 4.0 / 3 * Math.PI * Radius * Radius * Radius; }
+        }
+
+        /// <summary>
+        /// Получить тип фигуры
+        /// </summary>
+        public string Type
+        {
+            get { return "Sphere"; }
         }
     }
 }
